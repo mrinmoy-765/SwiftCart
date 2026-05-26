@@ -98,7 +98,7 @@ function displayAllProducts(products) {
          <h2 class="text-xl font-bold line-clamp-2">$ ${product.price}</h2>
       </div>
       <div class="flex justify-between items-center gap-2 px-4 pb-3">
-       <button class="button-default"><i class="fa-regular fa-eye mr-2"></i>Details</button>
+       <button onClick="loadDetails('${product.id}')" class="button-default"><i class="fa-regular fa-eye mr-2"></i>Details</button>
        <button class="button-cart"><i class="fa-solid fa-cart-arrow-down mr-2"></i>Add</button>
       </div>
    
@@ -183,5 +183,46 @@ const loadCategoryProducts = (category) => {
     .then((data) => displayAllProducts(data))
     .catch((error) => console.log(error));
 };
+
+const loadDetails = async (id) => {
+  const url = `https://fakestoreapi.com/products/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  displayDetails(data);
+};
+
+const displayDetails = (Details) => {
+  const detailContainer = document.getElementById("modal1-content");
+
+  const title = Details.title || "Not Available";
+  const category = Details.category || "Not Available";
+  const DetailsText = Details.description || "No additional details available";
+
+  const price =
+    Details.price !== undefined && Details.price !== null
+      ? `$${Details.price}`
+      : "Price not available";
+  const Rating = Details.rating.rate || "Not Available";
+  const Count = Details.rating.count || "Not Available";
+
+  detailContainer.innerHTML = `
+    <div class="p-4">
+      <img 
+        src="${Details.image}" 
+        alt="Pet Image" 
+        class="w-full h-64 object-cover rounded-lg mb-4" 
+      />
+    </div>
+     <p class="mb-2"><b>Title :</b> <span class="ml-2">${title}</span></p>
+      <p class="mb-2"><b>Category :</b> <span class="ml-2">${category}</span></p>
+      <p class="mb-2"><b>Description :</b> <span class="ml-2">${DetailsText}</span></p>
+      <p class="mb-2"><b>Price :</b> <span class="ml-2">${price}</span></p>
+      <p class="mb-2"><b>Rating :</b> <span class="ml-2">${Rating}</span></p>
+      <p class="mb-2"><b>Count :</b> <span class="ml-2">${Count}</span></p>
+  `;
+
+  document.getElementById("showModal1").click();
+};
+
 getAllProducts();
 getCategoryData();

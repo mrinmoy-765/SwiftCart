@@ -129,16 +129,23 @@ const displayCategories = (json) => {
   const categoryContainer = document.getElementById("categories");
 
   json.forEach((item) => {
-    console.log(item);
-
     const buttonContainer = document.createElement("div");
-    buttonContainer.innerHTML = `
-        <button onclick="loadCategoryProducts('${item}')"class="py-2 px-5 font-semibold border rounded-2xl">
-            ${item}
-        </button>
-        `;
+    const button = document.createElement("button");
+    button.className = "py-2 px-5 font-semibold border rounded-2xl";
+    button.textContent = item;
+    button.addEventListener("click", function () {
+      loadCategoryProducts(item);
+    });
+    buttonContainer.appendChild(button);
     categoryContainer.append(buttonContainer);
   });
+};
+
+const loadCategoryProducts = (category) => {
+  fetch(`https://fakestoreapi.com/products/category/${category}`)
+    .then((res) => res.json())
+    .then((data) => displayAllProducts(data))
+    .catch((error) => console.log(error));
 };
 getAllProducts();
 getCategoryData();

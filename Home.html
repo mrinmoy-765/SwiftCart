@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <!-- 2. Include Tailwind CSS Play CDN (allows custom config) -->
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- custom  css -->
+    <link  rel="stylesheet" href="style/style.css" />
+</head>
+
+<body id="body">
+<!-- Navbar -->
+<div class="navbar bg-base-100 shadow-sm px-4 md:px-10 lg:px-20">
+    <div class="navbar-start">
+        <h1 class="text-2xl font-bold text-primary">SwiftCart</h1>
+    </div>
+    <div class="navbar-center hidden md:flex space-x-3 text-gray-600 font-semibold">
+        <a href="" class="text-md">Home</a>
+        <a href="" class="text-md">Products</a>
+        <a href="" class="text-md">About</a>
+        <a href="" class="text-md">Contact</a>
+    </div>
+        <!-- Mobile menu (hidden by default) -->
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-40 z-40 hidden">
+            <div class="bg-white w-4/5 max-w-xs h-full p-6 flex flex-col gap-6 shadow-lg animate-slideInLeft" style="animation: slideInLeft 0.3s;">
+                <button id="close-mobile-menu" class="self-end mb-4 text-2xl text-gray-600"><i class="fa fa-times"></i></button>
+                <a href="Home.html" class="text-lg font-semibold text-gray-800 hover:text-primary">Home</a>
+                <a href="Products.html" class="text-lg font-semibold text-gray-800 hover:text-primary">Products</a>
+                <a href="About.html" class="text-lg font-semibold text-gray-800 hover:text-primary">About</a>
+                <a href="Contact.html" class="text-lg font-semibold text-gray-800 hover:text-primary">Contact</a>
+            </div>
+        </div>
+    <div class="navbar-end flex items-center">
+        <div class="dropdown dropdown-end">
+            <div tabIndex="0" role="button" class="btn-ghost btn-circle">
+                <div class="indicator">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span class="badge badge-sm indicator-item">8</span>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu button -->
+        <div class="md:hidden ml-2">
+            <button id="mobile-menu-btn" class="btn btn-ghost btn-circle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Hero Section -->
+<div class="bg-[linear-gradient(to_right,rgba(0,0,0,1),rgba(0,0,0,0.7),rgba(0,0,0,0)),url('./assets/banner-image.png')] 
+            bg-cover bg-center h-[350px] md:h-[450px] flex justify-center items-center px-4 md:px-0">
+    <div class="space-y-4 md:space-y-6 mt-8 md:mt-12 text-center md:text-left">
+        <h1 class="text-3xl md:text-6xl text-white font-bold">Best Collection For You</h1>
+        <p class="text-white text-sm md:text-md">
+            Discover the latest trends in fashion, electronics and more. Shop with <br class="hidden md:block">
+            confidence and style at SwiftCart
+        </p>
+        <button class="button">Shop Now</button>
+    </div>
+</div>
+<!-- Choose Us -->
+<div class="bg-gray-50 pb-15">
+<div class="flex flex-col justify-center items-center gap-3 py-10 px-4">
+    <h1 class="font-bold text-2xl md:text-4xl">Why Choose Us</h1>
+    <p class="text-gray-800 font-md text-center">We provide the best shopping experience with top-notch services.</p>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-center pt-7 gap-4 px-2 md:px-0">
+    <!-- card one -->
+    <div class="card card-border bg-base-100 w-64 relative mb-4 md:mb-0">
+        <div class="card-body  pt-10 pb-7">
+            <h2 class="text-2xl font-bold">Fast Delivery</h2>
+            <p>Get your orders delivered to your doorstep quickly and efficiently</p>     
+        </div>
+        <!-- icon -->
+         <div class="absolute left-4 -top-6  p-1 bg-white  rounded-md shadow-sm">
+        <div class="bg-blue-100 rounded-md px-2 py-1">
+            <i class="fa-solid fa-truck text-primary text-xl"></i>
+        </div>
+         </div>
+    </div>
+    <!-- card two -->
+    <div class="card card-border bg-base-100 w-64 relative mb-4 md:mb-0">
+        <div class="card-body  pt-10 pb-7">
+            <h2 class="text-2xl font-bold">24/7 Support</h2>
+            <p>Our support team is available  around the clock to assist you</p>
+        </div>
+        <!-- icon -->
+        <div class="absolute left-4 -top-6  p-1 bg-white  rounded-md shadow-sm">
+            <div class="bg-blue-100 rounded-md px-2 py-1">
+                <i class="fa-regular fa-headphones text-primary text-xl"></i>
+            </div>
+        </div>
+    </div>
+    <!-- card three -->
+    <div class="card card-border bg-base-100 w-64 relative mb-4 md:mb-0">
+        <div class="card-body  pt-10 pb-7">
+            <h2 class="text-2xl font-bold">Secure Payment</h2>
+            <p>Experience safe and secure transactions with our encripted payment systems.</p>
+        </div>
+        <!-- icon -->
+        <div class="absolute left-4 -top-6  p-1 bg-white  rounded-md shadow-sm">
+            <div class="bg-blue-100 rounded-md px-2 py-1">
+                <i class="fa-brands fa-battle-net text-primary text-xl"></i>
+            </div>
+        </div>
+    </div>
+    <!-- card four -->
+    <div class="card card-border bg-base-100 w-64 relative">
+        <div class="card-body  pt-10 pb-7">
+            <h2 class="text-2xl font-bold">Easy return</h2>
+            <p>Not satisfied?Return your products easily within 30 days.</p>
+        </div>
+        <!-- icon -->
+        <div class="absolute left-4 -top-6  p-1 bg-white  rounded-md shadow-sm">
+            <div class="bg-blue-100 rounded-md px-2 py-1">
+                <i class="fa-solid fa-arrows-rotate  text-primary text-xl"></i>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Trending -->
+<section id="trending" class="max-w-7xl mx-auto py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-10"></section>
+
+<!-- Footer -->
+<footer class="footer sm:footer-horizontal bg-[#1d2342] text-base-content p-10 text-gray-400">
+    <nav class="md:pl-25">
+       <h1 class="text-2xl md:text-3xl font-bold">SwiftCart</h1>
+       <p class="text-sm md:text-base">Your one stop shop for all your fashion and lifestyle needs. <br class="hidden md:block">Quality products, fast delivery and excellent support.</p>
+    </nav>
+    <nav>
+        <h6 class="footer-title">Quick Links</h6>
+        <a class="link link-hover">Home</a>
+        <a class="link link-hover">Products</a>
+        <a class="link link-hover">About</a>
+        <a class="link link-hover">Contacts</a>
+    </nav>
+    <nav>
+        <h6 class="footer-title">Support</h6>
+        <a class="link link-hover">FAQ</a>
+        <a class="link link-hover">Shipping</a>
+        <a class="link link-hover">Return</a>
+        <a class="link link-hover">Privacy Policy</a>
+    </nav>
+    <form>
+        <h6 class="footer-title">SUBSCRIBE TO OUR Newsletter</h6>
+        <fieldset class="w-full md:w-80">
+            <label class="text-sm md:text-base">The latest news, articles and resources <br class="hidden md:block"> are sent to your inbox daily</label>
+            <div class="join mt-3 flex flex-col sm:flex-row gap-2 sm:gap-0">
+                <input type="text" placeholder="Enter your email" class="input input-bordered join-item w-full sm:w-auto" />
+                <button class="button ml-0 sm:ml-2">Subscribe</button>
+            </div>
+        </fieldset>
+    </form>
+</footer>
+<footer class="bg-[#1d2342] text-base-content text-gray-400">
+<div class="border-b mx-4 md:mx-32 "></div>
+<div class="flex flex-col md:flex-row items-center justify-between py-6 px-4 md:px-32 gap-4 md:gap-0">
+    <p class="text-center md:text-left">@2025 SwiftCart, Inc, All rights reserved</p>
+    <div class="text-xl flex gap-3 justify-center md:justify-end">
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-linkedin-in"></i>
+        <i class="fa-regular fa-envelope"></i>
+    </div>
+</div>
+
+</footer>
+
+<script src="fetchAPI.js"></script>
+<style>
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+</style>
+<script>
+// Mobile menu open
+document.getElementById('mobile-menu-btn').addEventListener('click', function(e) {
+    document.getElementById('mobile-menu').classList.remove('hidden');
+});
+// Mobile menu close (X button)
+document.getElementById('close-mobile-menu').addEventListener('click', function(e) {
+    document.getElementById('mobile-menu').classList.add('hidden');
+});
+// Close menu when clicking outside the menu panel
+document.getElementById('mobile-menu').addEventListener('click', function(e) {
+    if (e.target === this) {
+        this.classList.add('hidden');
+    }
+});
+// Close menu when clicking a link
+document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.add('hidden');
+    });
+});
+</script>
+</body>
+
+</html>

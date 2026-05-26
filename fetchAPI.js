@@ -5,9 +5,6 @@ function truncateTitle(title, maxLength) {
   return title;
 }
 
-const myTitle = "How to Truncate a Very Long Title in JavaScript";
-console.log(truncateTitle(myTitle, 20)); // "How to Truncate a Ve..."
-
 //Fetch  trending API---first three data
 async function getAllProducts() {
   const url = "https://fakestoreapi.com/products";
@@ -111,4 +108,37 @@ function displayAllProducts(products) {
     section.appendChild(card);
   });
 }
+
+//Fetch category API
+async function getCategoryData() {
+  const url = "https://fakestoreapi.com/products/categories";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    displayCategories(json);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+const displayCategories = (json) => {
+  const categoryContainer = document.getElementById("categories");
+
+  json.forEach((item) => {
+    console.log(item);
+
+    const buttonContainer = document.createElement("div");
+    buttonContainer.innerHTML = `
+        <button onclick="loadCategoryProducts('${item}')"class="py-2 px-5 font-semibold border rounded-2xl">
+            ${item}
+        </button>
+        `;
+    categoryContainer.append(buttonContainer);
+  });
+};
 getAllProducts();
+getCategoryData();

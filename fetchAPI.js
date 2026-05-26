@@ -125,24 +125,60 @@ async function getCategoryData() {
   }
 }
 
+let currentCategory = "all";
+
 const displayCategories = (json) => {
   const categoryContainer = document.getElementById("categories");
+  categoryContainer.innerHTML = "";
+
+  // Create 'All' button
+  const allButtonContainer = document.createElement("div");
+  const allButton = document.createElement("button");
+  allButton.className =
+    "py-2 px-5 font-semibold border rounded-2xl bg-primary text-white";
+  allButton.textContent = "All";
+  allButton.setAttribute("data-category", "all");
+  allButton.addEventListener("click", function () {
+    setActiveCategory("all");
+    getAllProducts();
+  });
+  allButtonContainer.appendChild(allButton);
+  categoryContainer.append(allButtonContainer);
 
   json.forEach((item) => {
     const buttonContainer = document.createElement("div");
     const button = document.createElement("button");
     button.className = "py-2 px-5 font-semibold border rounded-2xl";
     button.textContent = item;
+    button.setAttribute("data-category", item);
     button.addEventListener("click", function () {
+      setActiveCategory(item);
       loadCategoryProducts(item);
     });
     buttonContainer.appendChild(button);
     categoryContainer.append(buttonContainer);
   });
+  setActiveCategory(currentCategory); // highlight the current
 };
 
+function setActiveCategory(category) {
+  currentCategory = category;
+  const buttons = document.querySelectorAll("#categories button");
+  buttons.forEach((btn) => {
+    if (btn.getAttribute("data-category") === category) {
+      btn.classList.add("bg-[#0000FF]", "text-white");
+      btn.classList.remove("bg-white", "text-primary");
+    } else {
+      btn.classList.remove("bg-[#0000FF]", "text-white");
+      btn.classList.add("bg-white", "text-primary");
+    }
+  });
+}
+
 const loadCategoryProducts = (category) => {
-  fetch(`https://fakestoreapi.com/products/category/${category}`)
+  fetch(
+    `https://fakestoreapi.com/products/category/${encodeURIComponent(category)}`,
+  )
     .then((res) => res.json())
     .then((data) => displayAllProducts(data))
     .catch((error) => console.log(error));

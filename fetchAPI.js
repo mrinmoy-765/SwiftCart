@@ -25,7 +25,8 @@ async function getAllProducts() {
 function displayProducts(products) {
   const section = document.getElementById("trending");
 
-  // clear previous content (optional)
+  if (!section) return;
+
   section.innerHTML = "";
 
   // get first 3 products
@@ -56,7 +57,7 @@ function displayProducts(products) {
          <h2 class="text-xl font-bold line-clamp-2">$ ${product.price}</h2>
       </div>
       <div class="flex justify-between items-center gap-2 px-4 pb-3">
-       <button class="button-default"><i class="fa-regular fa-eye mr-2"></i>Details</button>
+       <button onClick="loadDetails('${product.id}')" class="button-default"><i class="fa-regular fa-eye mr-2"></i>Details</button>
        <button class="button-cart"><i class="fa-solid fa-cart-arrow-down mr-2"></i>Add</button>
       </div>
    
@@ -68,9 +69,10 @@ function displayProducts(products) {
 }
 
 function displayAllProducts(products) {
-  const section = document.getElementById("trending");
+  const section = document.getElementById("allproducts");
 
-  // clear previous content (optional)
+  if (!section || !products) return;
+
   section.innerHTML = "";
 
   products.forEach((product) => {
@@ -224,5 +226,7 @@ const displayDetails = (Details) => {
   document.getElementById("showModal1").click();
 };
 
-getAllProducts();
-getCategoryData();
+document.addEventListener("DOMContentLoaded", function () {
+  getAllProducts();
+  getCategoryData();
+});

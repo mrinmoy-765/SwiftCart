@@ -58,7 +58,7 @@ function displayProducts(products) {
       </div>
       <div class="flex justify-between items-center gap-2 px-4 pb-3">
        <button onClick="loadDetails('${product.id}')" class="button-default"><i class="fa-regular fa-eye mr-2"></i>Details</button>
-       <button class="button-cart"><i class="fa-solid fa-cart-arrow-down mr-2"></i>Add</button>
+       <button onClick="addCart('${product.id}')" class="button-cart"><i class="fa-solid fa-cart-arrow-down mr-2"></i>Add</button>
       </div>
    
     
@@ -101,7 +101,7 @@ function displayAllProducts(products) {
       </div>
       <div class="flex justify-between items-center gap-2 px-4 pb-3">
        <button onClick="loadDetails('${product.id}')" class="button-default"><i class="fa-regular fa-eye mr-2"></i>Details</button>
-       <button class="button-cart"><i class="fa-solid fa-cart-arrow-down mr-2"></i>Add</button>
+       <button onClick="addCart('${product.id}')" class="button-cart"><i class="fa-solid fa-cart-arrow-down mr-2"></i>Add</button>
       </div>
    
     
@@ -224,6 +224,27 @@ const displayDetails = (Details) => {
   `;
 
   document.getElementById("showModal1").click();
+};
+
+//add to cart
+const cartItems = [];
+
+const addCart = async (item) => {
+  if (cartItems.includes(item)) {
+    alert("Item already available in cart");
+    return;
+  }
+
+  cartItems.push(item);
+  alert("Product added to cart");
+
+  // Update cart badge
+  const cartBadge = document.getElementById("cart-badge");
+  if (cartBadge) {
+    cartBadge.textContent = cartItems.length;
+  }
+
+  return cartItems;
 };
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -230,6 +230,38 @@ document.querySelectorAll('#mobile-menu a').forEach(function(link) {
         document.getElementById('mobile-menu').classList.add('hidden');
     });
 });
+
+// Highlight active navbar link
+function highlightActiveLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'Home.html';
+    
+    // Desktop navbar links
+    document.querySelectorAll('.navbar-center a').forEach(function(link) {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            link.classList.add('text-[#0000FF]');
+            link.classList.remove('text-gray-600');
+        } else {
+            link.classList.remove('text-[#0000FF]');
+            link.classList.add('text-gray-600');
+        }
+    });
+    
+    // Mobile navbar links
+    document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            link.classList.add('text-primary');
+            link.classList.remove('text-gray-800');
+        } else {
+            link.classList.remove('text-primary');
+            link.classList.add('text-gray-800');
+        }
+    });
+}
+
+// Calling the function when page loads
+document.addEventListener('DOMContentLoaded', highlightActiveLink);
 </script>
 </body>
 
